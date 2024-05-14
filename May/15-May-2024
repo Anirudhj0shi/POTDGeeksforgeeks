@@ -1,0 +1,44 @@
+class Solution {
+    
+  public:
+    int MinimumEffort(int n, int m, vector<vector<int>> &heights) {
+   
+         vector<vector<int>> dist(n,vector<int>(m,1e9));
+         
+         dist[0][0]=0;
+        priority_queue<pair<int,pair<int,int>>,
+        vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>>pq;
+        
+        pq.push({0,{0,0}});
+        
+        int dir[4][2]={{-1,0},{0,-1},{1,0},{0,1}};
+        
+        while(!pq.empty()){
+            
+            int diff=pq.top().first;
+            int x=pq.top().second.first;
+            int y=pq.top().second.second;
+            
+            pq.pop();
+            
+            for(int i=0;i<4;i++){
+                
+                int nx=x+dir[i][0];
+                int ny=y+dir[i][1];
+                
+                if(nx>=0 && nx<n && ny>=0 && ny<m){
+                    
+                    int newdiff=max(diff,abs(heights[nx][ny]-heights[x][y]));
+                    
+                    if(newdiff<dist[nx][ny]){
+                        
+                    dist[nx][ny]=newdiff;
+                    pq.push({newdiff,{nx,ny}});
+                    }
+                }
+            }
+        }
+            
+        return dist[n-1][m-1];
+    }
+};
