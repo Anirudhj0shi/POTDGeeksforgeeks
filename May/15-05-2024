@@ -1,0 +1,8 @@
+class Solution {
+  public:
+    string find(string s, map<string, string> &p) {
+       
+        return p[s] == s ? s : find(p[s], p);
+    }
+
+  
