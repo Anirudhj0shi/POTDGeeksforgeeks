@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    int swapNibbles(int n)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            int frontBit = (n & (1 << 7)) >> 7;
+            n = n & 127;
+            n = n << 1;
+            n = n | frontBit;
+        }
+        
+        return n;
+    }
+};
