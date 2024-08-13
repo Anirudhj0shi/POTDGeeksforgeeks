@@ -1,0 +1,3 @@
+long long int func(int n){
+    return sqrt(n);
+}
