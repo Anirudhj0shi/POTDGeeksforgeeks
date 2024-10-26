@@ -1,0 +1,11 @@
+class Solution {
+  public:
+    int count(struct Node* head, int key) {
+        int cnt = 0;   // Start Counter Variable
+        while(head != NULL){   // Traverse Linked List Upto Last Element
+            if(head->data == key) cnt++;   // Count If Data Matches To Key
+            head = head->next;   // Go To Next Node
+        }
+        return cnt;
+    }
+};
