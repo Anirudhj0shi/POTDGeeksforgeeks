@@ -1,0 +1,9 @@
+cl
+            pq.push(arr[i]);
+        }
+        while(!pq.empty()){
+            arr[j++]=pq.top();
+            pq.pop();
+        }
+    }
+};
